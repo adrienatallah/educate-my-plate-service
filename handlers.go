@@ -12,6 +12,9 @@ func searchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 
 	code := r.URL.Query().Get("code")
 
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Content-Type", "application/json")
+
 	fmt.Println("searching for code", code)
 
 	info, err := search(code)
@@ -28,6 +31,5 @@ func searchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 		return
 	}
 
-	w.Header().Set("Content-Type", "application/json")
 	w.Write(out)
 }
