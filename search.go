@@ -12,14 +12,14 @@ func search(code string) (*ProductInfo, error) {
 	resp, err := http.Get("https://world.openfoodfacts.org/api/v0/product/" + code)
 
 	if err != nil {
-		fmt.Println("Error with GET request with code", code)
+		fmt.Println("Error, ", err.Error(), ",with GET request with code", code)
 		return nil, err
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)
 
 	if err != nil {
-		fmt.Println("Error reading response body")
+		fmt.Println("Error reading response body", err.Error())
 		return nil, err
 	}
 
@@ -28,7 +28,7 @@ func search(code string) (*ProductInfo, error) {
 	err = json.Unmarshal(body, &p)
 
 	if err != nil {
-		fmt.Println("Error unmarshalling json")
+		fmt.Println("Error unmarshalling json", err.Error())
 		return nil, err
 	}
 

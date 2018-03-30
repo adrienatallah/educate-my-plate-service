@@ -20,14 +20,14 @@ func searchHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 	info, err := search(code)
 
 	if err != nil {
-		fmt.Println("Error searching for code", code)
+		fmt.Println("Error,", err.Error(), ",searching for code", code)
 		return
 	}
 
 	out, err := json.Marshal(info)
 
 	if err != nil {
-		fmt.Println("error marshalling json: ", err)
+		fmt.Println("error marshalling json: ", err.Error())
 		return
 	}
 
