@@ -18,6 +18,7 @@ func main() {
 
 	fmt.Println("initializing routes..")
 	router.GET("/search", searchHandler)
+	router.GET("/history", historyHandler)
 
 	fmt.Println("listening and serving..")
 
